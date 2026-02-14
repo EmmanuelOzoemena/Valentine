@@ -16,103 +16,90 @@
 /* The Glass Card */
 .valentine-card {
   background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
   border: 1px solid rgba(255, 255, 255, 0.6);
-  padding: 3rem;
-  border-radius: 20px;
+  padding: 2.5rem;
+  border-radius: 24px;
   text-align: center;
-  box-shadow: 0 8px 32px 0 rgba(231, 38, 116, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(231, 38, 116, 0.15);
   z-index: 10;
+  width: 90%;
   max-width: 400px;
-
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  min-height: 250px;
-}
-
-.valentine-card h1 {
-  color: #d81b60;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.valentine-card p {
-  color: #880e4f;
-  font-size: 1.1rem;
-  line-height: 1.5;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .valentine-card.expanded {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.6);
-  max-width: 450px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 60px rgba(233, 30, 99, 0.3);
+  max-width: 420px;
 }
 
-/* Floating Animation Elements */
-.floating-element {
-  position: absolute;
-  bottom: -50px;
-  user-select: none;
-  pointer-events: none;
-  animation: floatUp linear infinite;
-}
-
-.card-icon {
-  font-size: 3rem;
+/* Typography */
+.valentine-card h1 {
+  color: #d81b60;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
-  animation: pulse 2s infinite;
+  font-weight: 800;
 }
 
 .main-text {
-  transition: opacity 0.3s ease-in;
-  min-height: 80px;
+  color: #880e4f;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  white-space: pre-line; 
+  transition: opacity 0.4s ease;
+  margin: 10px 0;
 }
 
-.btn-opened {
-  background-color: #880e4f !important;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-/* Add a soft glow to the card when opened */
-.valentine-card.expanded {
-  box-shadow: 0 0 50px rgba(233, 30, 99, 0.4);
+.card-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  animation: pulse 2s infinite ease-in-out;
+  display: inline-block;
 }
 
 /* Button Styling */
 .btn-love {
-  margin-top: 20px;
-  padding: 12px 30px;
+  margin-top: 10px;
+  padding: 14px 35px;
   background-color: #e91e63;
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 50px;
   cursor: pointer;
-  font-weight: bold;
-  transition: transform 0.2s, background 0.3s;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+  transition: all 0.3s ease;
 }
 
 .btn-love:hover {
   background-color: #c2185b;
-  transform: scale(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+
+.btn-love:active {
+  transform: scale(0.95);
+}
+
+.btn-opened {
+  background-color: #ad1457 !important;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .valentine-card {
+    padding: 2rem 1.5rem;
+  }
+  .valentine-card h1 {
+    font-size: 1.8rem;
+  }
 }
