@@ -16,6 +16,7 @@ function App() {
       emoji: ['🌸', '🎈', '💖', '✨'][i % 4] // Mix it up!
     }));
     setElements(items);
+    
   }, []);
 
   return (
