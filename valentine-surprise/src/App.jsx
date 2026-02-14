@@ -10,7 +10,23 @@ This is a little hug in words. You deserve love that feels safe, soft, and real.
 
 Keep shining… the world is brighter just by being in it. ✨🌹`;
 
- 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "A Valentine Message For You",
+          text: "I found this sweet Valentine's note and thought of you! ❤️",
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.log("Error sharing", error);
+      }
+    } else {
+      // Fallback: Copy to clipboard if sharing API isn't supported
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard! Share it with your Valentine! ❤️");
+    }
+  };
 
   return (
     <div className="container">
@@ -34,11 +50,11 @@ Keep shining… the world is brighter just by being in it. ✨🌹`;
             {isOpen ? "Close Note" : "Open Message"}
           </button>
 
-          {/* {isOpen && (
+          {isOpen && (
             <button className="btn-share" onClick={handleShare}>
               Share Love 🔗
             </button>
-          )} */}
+          )}
         </div>
       </div>
 
