@@ -1,58 +1,27 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-
+import FloatingElements from "./components/FloatingElements"; 
 function App() {
-  const [elements, setElements] = useState([]);
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
 
- const message = `Hi beautiful soul 💖
+  const message = `Hi beautiful soul 💖
 
-This is a little hug wrapped in words. You deserve a love that feels like home—safe, soft, and undeniably real. 
+This is a little hug in words. You deserve love that feels safe, soft, and real.
 
-Today, let this be your reminder: you are cherished, you are seen, and you are far more amazing than you give yourself credit for. 
-
-Keep shining your light… the world is a much prettier place just because you’re in it. ✨🌹`;
-
-  useEffect(() => {
-    // Generate 30 random items for a fuller background
-    const items = Array.from({ length: 30 }).map((_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 20,
-      duration: 15 + Math.random() * 15,
-      size: 15 + Math.random() * 25,
-      emoji: ["🌸", "🎈", "💖", "✨"][i % 4], // Mix it up!
-    }));
-    setElements(items);
-  }, []);
+Keep shining… the world is brighter just by being in it. ✨🌹`;
 
   return (
     <div className="container">
-      {/* Background Floating Elements */}
-      {elements.map((el) => (
-        <span
-          key={el.id}
-          className="floating-element"
-          style={{
-            left: `${el.left}%`,
-            animationDelay: `${el.delay}s`,
-            animationDuration: `${el.duration}s`,
-            fontSize: `${el.size}px`,
-          }}
-        >
-          {el.emoji}
-        </span>
-      ))}
+      {/* 1. We replaced the old loop with this single component */}
+      <FloatingElements />
 
-      {/* Interactive Valentine Card */}
+      {/* 2. Your Interactive Valentine Card */}
       <div className={`valentine-card ${isOpen ? "expanded" : ""}`}>
-        <div className="card-icon">{isOpen ? "📂" : "💌"}</div>
+        <div className="card-icon">{isOpen ? "🌸" : "💌"}</div>
         <h1>{isOpen ? "A Secret Note..." : "For You ❤️"}</h1>
 
         <p className="main-text">
-          {isOpen
-            ? message
-            : "You have a new message waiting to be opened."}
+          {isOpen ? message : "You have a new message waiting to be opened."}
         </p>
 
         <button
