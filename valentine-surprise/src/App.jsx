@@ -15,7 +15,7 @@ Keep shining… the world is brighter just by being in it. ✨🌹`;
       try {
         await navigator.share({
           title: "A Valentine Message For You",
-          text: "I found this sweet Valentine's note and thought of you! ❤️",
+          text: "I wanted to send you a little piece of my heart today. Open this when you have a moment. ❤️🌹",
           url: window.location.href,
         });
       } catch (error) {
